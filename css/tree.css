@@ -1,0 +1,85 @@
+button{
+    height:30px;
+    padding:0 15px;
+    margin-right:10px;
+    border:none;
+}
+/*盛放决策树的容器*/
+#treeContainer{
+    padding-top:20px;
+    position:relative;
+}
+.node{
+    position:absolute;
+    top:20px;
+    left:0;
+    display:inline-block;
+    min-width:110px;
+    min-height:35px;
+    font-size:14px;
+    line-height:30px;
+    padding:3px;
+    text-align:center;
+    background:#fff;
+    border:1px solid #000;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.node span,.node img{
+    vertical-align:middle;
+    cursor:pointer;
+}
+.node span{
+    border:1px dashed transparent;
+    margin-right:3px;
+    box-sizing:border-box;
+}
+.node span:hover{border-color:#ccc;}
+.moldNode span{color:blue;}
+.conditionNode span{color:red;}
+.actionNode span{color:green;}
+/*下拉菜单*/
+.dropDown-menu{
+    list-style:none;
+    background-color:#fff;
+    -webkit-box-shadow: 2px 2px 0 #aaa;
+    -moz-box-shadow: 2px 2px 0 #aaa;
+    box-shadow: 2px 2px 0 #aaa;
+    border:1px solid #ccc;
+    margin:0;
+    padding:5px 0;
+    font-size:12px;
+    position:absolute;
+    z-index:2000;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display:none;
+}
+.dropDown-menu:before{
+    content:'';
+    border-style:solid;
+    border-width:0 8px 8px;
+    border-color:transparent transparent #ccc;
+    position:absolute;
+    top:-9px;
+    left:15px;
+}
+.dropDown-menu:after{
+    content:'';
+    border-style:solid;
+    border-width:0 7px 7px;
+    border-color:transparent transparent #fff;
+    position:absolute;
+    top:-7px;
+    left:15px;
+}
+.dropDown-menu li{padding:5px 20px;}
+.dropDown-menu li:hover{
+    background:#eee;
+    cursor:pointer;
+}

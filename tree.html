@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tree</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/jsplumb.js"></script>
+    <link rel="stylesheet" href="css/tree.css"/>
+</head>
+<body>
+   <div id="btns">
+       <button id="saveBtn">保存</button>
+   </div>
+   <div id="treeContainer">
+        <div class="node moldNode" data-nodeType="mold" id="start">
+            <span>请选择类型</span>
+            <img class="nodeChoose" src="images/ok.png" alt=""/>
+        </div>
+   </div>
+   <ul class="dropDown-menu">
+       <li>选择变量</li>
+       <li>选择参数</li>
+       <li>选择方法</li>
+       <li>选择函数</li>
+   </ul>
+   <script src="js/tree.js"></script>
+</body>
+</html>

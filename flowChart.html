@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>flowChart</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/jsplumb.js"></script>
+    <link rel="stylesheet" href="css/flowChart.css"/>
+</head>
+<body>
+<!--状态选择按钮-->
+<div id="btns">
+    <button id="clickBtn">点击</button>
+    <button id="dragBtn">拖拽</button>
+    <button id="conBtn">连线</button>
+    <button id="imBtn">导入</button>
+    <button id="exBtn">导出</button>
+    <select id="selectFlowTitle">
+        <option id="newFlowDefault">新流程图</option>
+    </select>
+    <button id="saveCurrentFlow">保存当前流程图吗？</button>
+    <button id="modifyConfig">修改默认配置</button>
+</div>
+<!--可选择的block-->
+<div id="blocks">
+    <img src="images/icon_start.png" id="start" title="开始"/>
+    <img src="images/icon_rule.png" id="rule" title="规则"/>
+    <img src="images/icon_package.png" id="package" title="包"/>
+    <img src="images/icon_action.png" id="action" title="动作"/>
+    <img src="images/icon_script.png" id="script" title="脚本"/>
+    <img src="images/icon_decision.png" id="decision" title="决策"/>
+    <img src="images/icon_fork.png" id="fork" title="分支"/>
+    <img src="images/icon_join.png" id="join" title="聚合"/>
+</div>
+<!--新流程图名称容器-->
+<div id="newFlowContainer">
+    <div class="newFlow active" id="newFlow0">新流程图<i>x</i></div>
+</div>
+<!--流程图容器-->
+<div id="flowContainer"></div>
+<!--导入json的模态框-->
+<div id="importModel">
+    <p>请输入json数据</p>
+    <textarea id="jsonContainer" cols="100" rows="10"></textarea>
+    <button id="importJsonBtn">importJson</button>
+    <button id="cancelImportBtn">cancel</button>
+</div>
+<!--保存当前流程图的模态框-->
+<div id="currentFlowModel">
+    <label for="currentFlowChartName">请给当前流程图命名:</label>
+    <input type="text" id="currentFlowChartName"/>
+    <button id="currentFlowNameOk">OK</button>
+    <button id="currentFlowNameNo">NO</button>
+</div>
+<!--关闭流程图的模态框-->
+<div id="closeFlowModel">
+    <h3>此流程图未保存，关闭前是否要保存吗？</h3>
+    <button id="closeFlowYes">Yes</button>
+    <button id="closeFlowNo">No</button>
+    <button id="closeFlowCancel">Cancel</button>
+</div>
+<!--自定义右键菜单-->
+<ul id="contextMenu">
+    <li class="create">创建子流程图</li>
+    <li class="deleteSubFlow">删除子流程图</li>
+    <li class="property">属性</li>
+    <li class="deleteBlock">删除该节点</li>
+</ul>
+<!--右侧侧边栏-->
+<div id="switch"></div>
+<div id="aside">
+    <div id="thumb" class="newFlow active">缩略图</div>
+    <div id="prop" class="newFlow">属性</div>
+</div>
+<!--属性容器-->
+<div id="propContainer">
+    <div id="flowProp">
+        <h3>流程图属性</h3>
+        <label for="flowTitle">名称:</label>
+        <input type="text" id="flowTitle"/><br/>
+        <button id="saveFlowPropBtn">保存</button>
+    </div>
+    <br/>
+    <div id="blockProp">
+        <hr/>
+        <h3>元素属性</h3>
+        <label for="titleInp">title:</label>
+        <input type="text" id="titleInp"/><br>
+        <label for="widthInp">width:</label>
+        <input type="text" id="widthInp"/><br>
+        <label for="heightInp">height:</label>
+        <input type="text" id="heightInp"/><br>
+        <label for="textInp">text:</label>
+        <input type="text" id="textInp"/><br/>
+        <!--<label for="labelInp">label:</label>-->
+        <!--<input type="text" id="labelInp"/><br>-->
+        <button id="saveNodePropBtn">保存</button>
+    </div>
+</div>
+<!--缩略图容器-->
+<div id="thumbnailContainer">
+    <div id="thumbnail"></div>
+</div>
+<!--修改默认配置的模态框-->
+<div id="modifyConfigModel">
+    <h3>配置修改</h3>
+    <form>
+        <label for="type">类型：</label>
+        <select id="type">
+            <option value="start">开始</option>
+            <option value="rule">规则</option>
+            <option value="package">包</option>
+            <option value="action">动作</option>
+            <option value="script">脚本</option>
+            <option value="decision">决策</option>
+            <option value="fork">分支</option>
+            <option value="join">聚合</option>
+        </select><br/>
+        <label for="typeIsSource">是否源：</label>
+        <!--<input type="text" id="typeIsSource" value="是"/><br/>-->
+        <select id="typeIsSource">
+            <option value="true">是</option>
+            <option value="false">否</option>
+        </select><br/>
+        <label for="typeSourceMaxConn">源可连接数：</label>
+        <input type="text" id="typeSourceMaxConn" value="1"/><br/>
+        <label for="typeIsTarget">是否目标：</label>
+        <!--<input type="text" id="typeIsTarget" value="否"/><br/>-->
+        <select id="typeIsTarget">
+            <option value="false">否</option>
+            <option value="true">是</option>
+        </select><br/>
+        <label for="typeTargetMaxConn">目标可连接数：</label>
+        <input type="text" id="typeTargetMaxConn" value="0"/><br/>
+    </form>
+    <div id="modifyConfigBtn">
+        <button id="modifyConfigOk">确认</button>
+        <button id="modifyConfigNo">取消</button>
+    </div>
+</div>
+<script src="js/flowChart.js"></script>
+</body>
+</html>
